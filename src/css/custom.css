@@ -1,0 +1,131 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    --ifm-color-primary: #067efe;
+    --ifm-color-primary-dark: #0171e9;
+    --ifm-color-primary-darker: #016bdc;
+    --ifm-color-primary-darkest: #0158b5;
+    --ifm-color-primary-light: #208bfe;
+    --ifm-color-primary-lighter: #2d92fe;
+    --ifm-color-primary-lightest: #54a6fe;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+    --ifm-color-primary: #25c2a0;
+    --ifm-color-primary-dark: #21af90;
+    --ifm-color-primary-darker: #1fa588;
+    --ifm-color-primary-darkest: #1a8870;
+    --ifm-color-primary-light: #29d5b0;
+    --ifm-color-primary-lighter: #32d8b4;
+    --ifm-color-primary-lightest: #4fddbf;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* 侧边栏选中项样式 - 背景色与文字颜色匹配但更浅 */
+.menu__link--active {
+    background-color: rgba(8, 91, 181, 0.1) !important;
+    color: var(--ifm-color-primary) !important;
+}
+
+/* 暗色模式下的侧边栏选中项样式 */
+[data-theme='dark'] .menu__link--active {
+    background-color: rgba(37, 194, 160, 0.15) !important;
+    color: var(--ifm-color-primary) !important;
+}
+
+/* 自定义 Admonition（提示框）颜色 */
+/* Tip 提示框 - 绿色系 */
+.admonition-icon-tip {
+    color: var(--ifm-color-primary) !important;
+}
+.admonition-tip {
+    border-left-color: var(--ifm-color-primary) !important;
+    background-color: rgba(6, 126, 254, 0.1) !important;
+}
+
+/* Note 笔记框 - 灰色/蓝色系 */
+.admonition-icon-note {
+    color: #448aff !important;
+}
+.admonition-note {
+    border-left-color: #448aff !important;
+    background-color: rgba(68, 138, 255, 0.1) !important;
+}
+
+/* Info 信息框 - 蓝色系 */
+.admonition-icon-info {
+    color: #2196f3 !important;
+}
+.admonition-info {
+    border-left-color: #2196f3 !important;
+    background-color: rgba(33, 150, 243, 0.1) !important;
+}
+
+/* Warning 警告框 - 黄色系 */
+.admonition-icon-warning {
+    color: #ff9800 !important;
+}
+.admonition-warning {
+    border-left-color: #ff9800 !important;
+    background-color: rgba(255, 152, 0, 0.1) !important;
+}
+
+/* Danger 危险框 - 红色系 */
+.admonition-icon-danger {
+    color: #f44336 !important;
+}
+.admonition-danger {
+    border-left-color: #f44336 !important;
+    background-color: rgba(244, 67, 54, 0.1) !important;
+}
+
+/* 暗色模式下的 Admonition 样式 */
+[data-theme='dark'] .admonition-tip {
+    background-color: rgba(37, 194, 160, 0.15) !important;
+}
+[data-theme='dark'] .admonition-note {
+    background-color: rgba(68, 138, 255, 0.15) !important;
+}
+[data-theme='dark'] .admonition-info {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+[data-theme='dark'] .admonition-warning {
+    background-color: rgba(255, 152, 0, 0.15) !important;
+}
+[data-theme='dark'] .admonition-danger {
+    background-color: rgba(244, 67, 54, 0.15) !important;
+}
+
+/* 自定义 DocCard 图标颜色 - 使用浅紫色 */
+.theme-doc-card svg,
+.theme-doc-card-icon svg,
+.cardContainer_fWXF svg {
+    color: #a78bfa !important;
+    fill: #a78bfa !important;
+}
+
+[data-theme='dark'] .theme-doc-card svg,
+[data-theme='dark'] .theme-doc-card-icon svg,
+[data-theme='dark'] .cardContainer_fWXF svg {
+    color: #c4b5fd !important;
+    fill: #c4b5fd !important;
+}
+
+/* 覆盖所有可能的DocCard图标选择器 */
+.theme-doc-card a svg,
+.theme-doc-card [class*="card"] svg {
+    color: #a78bfa !important;
+}
+
+[data-theme='dark'] .theme-doc-card a svg,
+[data-theme='dark'] .theme-doc-card [class*="card"] svg {
+    color: #c4b5fd !important;
+}
