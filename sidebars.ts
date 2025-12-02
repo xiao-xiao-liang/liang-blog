@@ -20,6 +20,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'JUC',
+      collapsed: true,
+      collapsible: true,
+      link: {
+        type: 'doc',
+        id: 'JUC/index',
+      },
+      items: [
+        'JUC/ThreadLocal',
+      ],
+    },
+    {
+      type: 'category',
       label: 'MySQL',
       collapsed: true,
       collapsible: true,
