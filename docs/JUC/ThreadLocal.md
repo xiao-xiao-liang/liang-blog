@@ -74,11 +74,20 @@ ThreadLocal 的内部实现基于 **ThreadLocalMap**，这是一个存储在线�
 
 
 ```java
-static class Entry extends WeakReference<ThreadLocal<?>> {
-    Object value;  // 强引用
-    Entry(ThreadLocal<?> k, Object v) {
-        super(k);  // 弱引用
-        value = v;
+public class Thread implements Runnable {
+    ThreadLocal.ThreadLocalMap threadLocals = null;
+    ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
+}
+
+public class ThreadLocal {
+    static class ThreadLocalMap {
+        static class Entry extends WeakReference<ThreadLocal<?>> {
+            Object value;  // 强引用
+            Entry(ThreadLocal<?> k, Object v) {
+               super(k);  // 弱引用
+             value = v;
+            }
+        }
     }
 }
 ```
