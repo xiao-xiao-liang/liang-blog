@@ -8,23 +8,66 @@ import DocCardList from '@theme/DocCardList';
 
 欢迎来到 **Java 并发（JUC）** 学习文档，这里会系统梳理 Java 并发编程中的核心知识点，并结合源码与实际场景进行讲解。
 
-当前你已经可以在本模块中看到的内容之一是 **`ThreadLocal` 专题**，它围绕以下几个核心问题展开：
+## 📚 当前已涵盖的主题
 
-- **什么是 ThreadLocal？**  
+本模块目前包含以下核心主题：
 
-- **ThreadLocal 的底层存储原理**  
+### 1. ThreadLocal 专题
 
-- **ThreadLocal 为何会导致内存泄漏？**  
+**`ThreadLocal`** 是 Java 中实现线程局部变量的重要工具。本专题围绕以下核心问题展开：
 
-- **如何正确使用 ThreadLocal，避免泄漏？**  
+- **什么是 ThreadLocal？** - 理解线程局部变量的概念和应用场景
 
-- **如何跨线程传递 ThreadLocal 的值？**  
+- **ThreadLocal 的底层存储原理** - 深入源码，理解 ThreadLocalMap 的数据结构
 
-- **InheritableThreadLocal 的实现原理**  
+- **ThreadLocal 为何会导致内存泄漏？** - 分析弱引用 Key 和强引用 Value 带来的内存风险
 
-- **TransmittableThreadLocal 的实现原理**  
+- **如何正确使用 ThreadLocal，避免泄漏？** - 掌握最佳实践和解决方案
 
-后续你可以在本模块中继续扩展更多 JUC 主题（如 AQS、锁、线程池、原子类等），本索引页会作为整体导航，帮助你快速了解每个小节在并发体系中的位置。
+- **如何跨线程传递 ThreadLocal 的值？** - 学习 InheritableThreadLocal、TransmittableThreadLocal 等方案
+
+- **InheritableThreadLocal 的实现原理** - 理解父子线程间的值传递机制
+
+- **TransmittableThreadLocal 的实现原理** - 掌握线程池场景下的上下文传递方案
+
+### 2. 线程池专题
+
+**线程池** 是 Java 并发编程中管理和复用线程的核心框架。本专题涵盖以下内容：
+
+- **什么是线程池？** - 理解池化思想和线程池的核心价值
+
+- **如何创建线程池？** - 学习 Executors 工厂类和 ThreadPoolExecutor 构造方法
+
+- **为什么不推荐使用 Executors 创建线程池？** - 理解资源耗尽风险和最佳实践
+
+- **线程池的核心线程会被回收吗？** - 理解 allowCoreThreadTimeOut 参数的作用
+
+- **核心线程空闲时处于什么状态？** - 理解 WAITING 和 TIMED_WAITING 状态
+
+- **线程池的拒绝策略有哪些？** - 掌握 AbortPolicy、CallerRunsPolicy 等四种标准策略
+
+- **线程池常用的阻塞队列有哪些？** - 学习 ArrayBlockingQueue、LinkedBlockingQueue 等队列特性
+
+- **线程池处理任务的流程** - 深入理解"先核心，后队列，再最大，最后拒绝"的执行逻辑
+
+- **线程池中线程异常后，销毁还是复用？** - 理解 execute() 和 submit() 的差异
+
+- **如何给线程池命名？** - 掌握线程命名的最佳实践
+
+- **如何合理地设置线程池的大小？** - 学会根据 CPU 密集型和 I/O 密集型任务进行调优
+
+## 🚀 后续规划
+
+本模块将继续扩展更多 JUC 核心主题，包括但不限于：
+
+- **AQS（AbstractQueuedSynchronizer）** - 并发工具类的基石
+- **锁机制** - ReentrantLock、ReadWriteLock 等
+- **原子类** - AtomicInteger、AtomicReference 等
+- **并发集合** - ConcurrentHashMap、CopyOnWriteArrayList 等
+- **并发工具类** - CountDownLatch、CyclicBarrier、Semaphore 等
+- **Fork/Join 框架** - 并行计算框架
+
+本索引页会作为整体导航，帮助你快速了解每个小节在并发体系中的位置。
 
 开始你的 Java 并发学习之旅吧！🚀
 
