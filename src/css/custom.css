@@ -15,6 +15,18 @@
     --ifm-color-primary-lightest: #54a6fe;
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    
+    /* 字体大小和行距设置 - 减小字体和行距以显示更多内容 */
+    --ifm-font-size-base: 14px; /* 基础字体大小，默认是 16px */
+    --ifm-line-height-base: 1.5; /* 基础行高，默认是 1.6 */
+    
+    /* 标题字体大小调整 */
+    --ifm-h1-font-size: 2rem; /* 默认 2.25rem */
+    --ifm-h2-font-size: 1.5rem; /* 默认 1.75rem */
+    --ifm-h3-font-size: 1.25rem; /* 默认 1.5rem */
+    --ifm-h4-font-size: 1.1rem; /* 默认 1.25rem */
+    --ifm-h5-font-size: 1rem; /* 默认 1.125rem */
+    --ifm-h6-font-size: 0.875rem; /* 默认 1rem */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,6 +39,18 @@
     --ifm-color-primary-lighter: #32d8b4;
     --ifm-color-primary-lightest: #4fddbf;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    
+    /* 暗色模式下的字体大小和行距设置 */
+    --ifm-font-size-base: 14px;
+    --ifm-line-height-base: 1.5;
+    
+    /* 暗色模式下的标题字体大小 */
+    --ifm-h1-font-size: 2rem;
+    --ifm-h2-font-size: 1.5rem;
+    --ifm-h3-font-size: 1.25rem;
+    --ifm-h4-font-size: 1.1rem;
+    --ifm-h5-font-size: 1rem;
+    --ifm-h6-font-size: 0.875rem;
 }
 
 /* 侧边栏选中项样式 - 背景色与文字颜色匹配但更浅 */
@@ -104,28 +128,94 @@
     background-color: rgba(244, 67, 54, 0.15) !important;
 }
 
-/* 自定义 DocCard 图标颜色 - 使用浅紫色 */
-.theme-doc-card svg,
-.theme-doc-card-icon svg,
-.cardContainer_fWXF svg {
-    color: #a78bfa !important;
-    fill: #a78bfa !important;
+/* 进一步优化文档内容区域的字体和行距 */
+.markdown {
+    font-size: var(--ifm-font-size-base);
+    line-height: var(--ifm-line-height-base);
 }
 
-[data-theme='dark'] .theme-doc-card svg,
-[data-theme='dark'] .theme-doc-card-icon svg,
-[data-theme='dark'] .cardContainer_fWXF svg {
-    color: #c4b5fd !important;
-    fill: #c4b5fd !important;
+/* 段落间距优化 */
+.markdown p {
+    margin-bottom: 0.75rem; /* 默认是 1rem */
 }
 
-/* 覆盖所有可能的DocCard图标选择器 */
-.theme-doc-card a svg,
-.theme-doc-card [class*="card"] svg {
-    color: #a78bfa !important;
+/* 列表项间距优化 */
+.markdown ul,
+.markdown ol {
+    margin-bottom: 0.75rem;
 }
 
-[data-theme='dark'] .theme-doc-card a svg,
-[data-theme='dark'] .theme-doc-card [class*="card"] svg {
-    color: #c4b5fd !important;
+.markdown li {
+    margin-bottom: 0.25rem;
+}
+
+/* 代码块字体大小 */
+.markdown pre {
+    font-size: 13px; /* 代码块字体 */
+    line-height: 1.45;
+}
+
+/* 表格字体和间距优化 */
+.markdown table {
+    font-size: 0.9em;
+}
+
+.markdown table td,
+.markdown table th {
+    padding: 0.5rem 0.75rem; /* 减小单元格内边距 */
+}
+
+/* LaTeX 公式样式 - 确保块级公式居中显示 */
+
+/* 标准块级公式（带有 katex-display 类的） */
+.markdown .katex-display {
+    display: block !important;
+    margin: 0.5rem auto !important;
+    text-align: center !important;
+    overflow-x: auto;
+    width: fit-content;
+    max-width: 100%;
+    font-size: 1em;
+}
+
+/* 关键修复：识别独立成段的块级公式（$$...$$ 渲染为 <p><span class="katex">...</span></p> 的情况） */
+/* 如果段落只包含一个 katex 元素（可能是唯一子元素），让整个段落居中 */
+.markdown p:has(> span.katex:only-child),
+.markdown p:has(span.katex:first-child:last-child) {
+    text-align: center !important;
+    margin: 0.5rem 0 !important;
+}
+
+/* 让独立公式段落中的公式本身居中显示 */
+.markdown p:has(> span.katex:only-child) > span.katex,
+.markdown p:has(span.katex:first-child:last-child) > span.katex {
+    display: block !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: fit-content;
+}
+
+/* 行内公式样式（保持与文字对齐，不居中） */
+.markdown .katex:not(.katex-display) {
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 1em;
+}
+
+/* 默认：段落中的 katex 是行内的，但如果是独立公式段落则改为块级 */
+.markdown p > span.katex {
+    display: inline-block;
+}
+
+.markdown p:has(> span.katex:only-child) > span.katex,
+.markdown p:has(span.katex:first-child:last-child) > span.katex {
+    display: block !important;
+}
+
+/* 列表中的块级公式 */
+.markdown li .katex-display,
+.markdown li p:has(> span.katex:only-child),
+.markdown li p:has(span.katex:first-child:last-child) {
+    text-align: center !important;
+    margin: 0.5rem auto !important;
 }

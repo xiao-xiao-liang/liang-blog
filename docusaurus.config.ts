@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -17,7 +19,7 @@ const config: Config = {
 
   // Set the production url of your site here
   // 请根据实际情况修改为你的域名或 IP 地址
-  url: 'http://xiaoxiaoliang.com',  // 或者使用你的域名，如 'https://yourdomain.com'
+  url: 'http://xiaoxiaoliang.top',  // 或者使用你的域名，如 'https://yourdomain.com'
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -63,6 +65,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts', // 侧边栏配置文件
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: {
           showReadingTime: true,
@@ -73,12 +77,21 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
+      type: 'text/css',
+    },
   ],
 
   themeConfig: {
