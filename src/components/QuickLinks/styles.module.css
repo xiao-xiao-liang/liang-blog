@@ -1,0 +1,91 @@
+/* QuickLinks 快速导航组件样式 */
+
+.quickLinks {
+    padding: 3rem 0;
+    background: linear-gradient(180deg, transparent 0%, var(--ifm-background-surface-color) 100%);
+}
+
+.linkGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.linkCard {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: var(--ifm-background-surface-color);
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.linkCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--ifm-color-primary);
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkIcon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.linkContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.linkTitle {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.linkDescription {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ifm-color-emphasis-600);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.linkArrow {
+    font-size: 1.25rem;
+    color: var(--ifm-color-primary);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+.linkCard:hover .linkArrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 暗色模式适配 */
+[data-theme='dark'] .linkCard {
+    background: var(--ifm-background-surface-color);
+    border-color: var(--ifm-color-emphasis-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .linkCard:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .linkDescription {
+    color: var(--ifm-color-emphasis-500);
+}

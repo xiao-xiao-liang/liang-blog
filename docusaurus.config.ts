@@ -1,8 +1,9 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeShiki from '@shikijs/rehype';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -59,6 +60,11 @@ const config: Config = {
     ],
   ],
 
+  // 客户端模块 - 在客户端加载的脚本
+  clientModules: [
+    require.resolve('./src/components/ShikiEnhancer/index.tsx'),
+  ],
+
   presets: [
     [
       'classic',
@@ -67,6 +73,21 @@ const config: Config = {
           sidebarPath: './sidebars.ts', // 侧边栏配置文件
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
+          // 使用 Shiki 进行代码高亮 (在 Prism 之前处理)
+          beforeDefaultRehypePlugins: [
+            [
+              rehypeShiki,
+              {
+                // 使用双主题模式：亮色和暗色
+                themes: {
+                  light: 'one-light', // 亮色主题 (One Light)
+                  dark: 'one-dark-pro',   // 暗色主题 (One Dark Pro)
+                },
+                // 添加语言类名到代码块
+                addLanguageClass: true,
+              },
+            ],
+          ],
         },
         blog: {
           showReadingTime: true,
@@ -79,6 +100,20 @@ const config: Config = {
           onUntruncatedBlogPosts: 'warn',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
+          // 使用 Shiki 进行代码高亮 (在 Prism 之前处理)
+          beforeDefaultRehypePlugins: [
+            [
+              rehypeShiki,
+              {
+                themes: {
+                  light: 'one-light',
+                  dark: 'one-dark-pro',
+                },
+                // 添加语言类名到代码块
+                addLanguageClass: true,
+              },
+            ],
+          ],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -211,7 +246,7 @@ const config: Config = {
       theme: prismThemes.jettwaveLight,
       darkTheme: prismThemes.dracula,
       defaultLanguage: 'java',
-      additionalLanguages: ['bash', 'java', 'properties']
+      additionalLanguages: ['bash', 'java', 'properties', 'sql']
     },
   } satisfies Preset.ThemeConfig,
 };

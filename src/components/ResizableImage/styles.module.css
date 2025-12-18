@@ -1,0 +1,101 @@
+/* 可调整大小图片组件样式 */
+
+.container {
+  position: relative;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+  overflow: visible;
+  transition: box-shadow 0.2s ease;
+}
+
+.container:hover {
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
+}
+
+.container.dragging {
+  box-shadow: 0 0 0 3px var(--ifm-color-primary);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* 调整手柄 - 右下角 */
+.resizeHandle {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 20px;
+  height: 20px;
+  background: var(--ifm-color-primary);
+  border-radius: 50%;
+  cursor: nwse-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.container:hover .resizeHandle,
+.container.dragging .resizeHandle {
+  opacity: 1;
+}
+
+.resizeHandle:hover {
+  transform: scale(1.2);
+  background: var(--ifm-color-primary-dark);
+}
+
+.resizeHandle:active {
+  transform: scale(1.1);
+}
+
+/* 宽度指示器 */
+.widthIndicator {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: monospace;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.container:hover .widthIndicator,
+.container.dragging .widthIndicator {
+  opacity: 1;
+}
+
+/* 暗色模式适配 */
+[data-theme='dark'] .container:hover {
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .container.dragging {
+  box-shadow: 0 0 0 3px var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .resizeHandle {
+  background: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .resizeHandle:hover {
+  background: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .widthIndicator {
+  background: rgba(255, 255, 255, 0.2);
+}

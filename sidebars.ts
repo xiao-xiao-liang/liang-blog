@@ -1,4 +1,4 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   // 手动定义侧边栏结构以支持多级目录
@@ -43,9 +43,11 @@ const sidebars: SidebarsConfig = {
         id: 'MySQL/index',
       },
       items: [
-        'MySQL/事务',
+        'MySQL/MVCC',
         'MySQL/锁',
         'MySQL/日志文件',
+        'MySQL/存储引擎',
+        'MySQL/索引',
       ],
     },
   ],

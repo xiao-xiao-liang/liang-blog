@@ -1,0 +1,104 @@
+/* ShikiEnhancer - Shiki 代码块增强样式 */
+
+/* 代码块容器 */
+.shiki-code-block-container {
+    position: relative;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d0d7de;
+}
+
+html[data-theme='dark'] .shiki-code-block-container {
+    border-color: #3a4255;
+}
+
+/* 工具栏 */
+.shiki-code-block-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.75rem;
+    background-color: #f6f8fa;
+    border-bottom: 1px solid #d0d7de;
+    min-height: 32px;
+}
+
+html[data-theme='dark'] .shiki-code-block-toolbar {
+    background-color: #161b22;
+    border-bottom-color: #3a4255;
+}
+
+/* 语言标签 */
+.shiki-language-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #57606a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html[data-theme='dark'] .shiki-language-label {
+    color: #8b949e;
+}
+
+/* 复制按钮 */
+.shiki-copy-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #57606a;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.shiki-copy-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #24292f;
+}
+
+.shiki-copy-button:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.shiki-copy-button.copied {
+    color: #1a7f37;
+}
+
+html[data-theme='dark'] .shiki-copy-button {
+    color: #8b949e;
+}
+
+html[data-theme='dark'] .shiki-copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c9d1d9;
+}
+
+html[data-theme='dark'] .shiki-copy-button.copied {
+    color: #3fb950;
+}
+
+.shiki-copy-text {
+    font-size: 12px;
+}
+
+/* 增强后的 Shiki 代码块样式调整 */
+.shiki-code-block-container .shiki {
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* 确保代码块内容不会有多余的边距 */
+.shiki-code-block-container .shiki code {
+    display: block;
+}

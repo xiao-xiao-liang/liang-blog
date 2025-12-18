@@ -15,18 +15,26 @@
     --ifm-color-primary-lightest: #54a6fe;
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-    
+
     /* 字体大小和行距设置 - 减小字体和行距以显示更多内容 */
-    --ifm-font-size-base: 14px; /* 基础字体大小，默认是 16px */
-    --ifm-line-height-base: 1.5; /* 基础行高，默认是 1.6 */
-    
+    --ifm-font-size-base: 14px;
+    /* 基础字体大小，默认是 16px */
+    --ifm-line-height-base: 1.5;
+    /* 基础行高，默认是 1.6 */
+
     /* 标题字体大小调整 */
-    --ifm-h1-font-size: 2rem; /* 默认 2.25rem */
-    --ifm-h2-font-size: 1.5rem; /* 默认 1.75rem */
-    --ifm-h3-font-size: 1.25rem; /* 默认 1.5rem */
-    --ifm-h4-font-size: 1.1rem; /* 默认 1.25rem */
-    --ifm-h5-font-size: 1rem; /* 默认 1.125rem */
-    --ifm-h6-font-size: 0.875rem; /* 默认 1rem */
+    --ifm-h1-font-size: 2rem;
+    /* 默认 2.25rem */
+    --ifm-h2-font-size: 1.5rem;
+    /* 默认 1.75rem */
+    --ifm-h3-font-size: 1.25rem;
+    /* 默认 1.5rem */
+    --ifm-h4-font-size: 1.1rem;
+    /* 默认 1.25rem */
+    --ifm-h5-font-size: 1rem;
+    /* 默认 1.125rem */
+    --ifm-h6-font-size: 0.875rem;
+    /* 默认 1rem */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -39,11 +47,11 @@
     --ifm-color-primary-lighter: #32d8b4;
     --ifm-color-primary-lightest: #4fddbf;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-    
+
     /* 暗色模式下的字体大小和行距设置 */
     --ifm-font-size-base: 14px;
     --ifm-line-height-base: 1.5;
-    
+
     /* 暗色模式下的标题字体大小 */
     --ifm-h1-font-size: 2rem;
     --ifm-h2-font-size: 1.5rem;
@@ -70,6 +78,7 @@
 .admonition-icon-tip {
     color: var(--ifm-color-primary) !important;
 }
+
 .admonition-tip {
     border-left-color: var(--ifm-color-primary) !important;
     background-color: rgba(6, 126, 254, 0.1) !important;
@@ -79,6 +88,7 @@
 .admonition-icon-note {
     color: #448aff !important;
 }
+
 .admonition-note {
     border-left-color: #448aff !important;
     background-color: rgba(68, 138, 255, 0.1) !important;
@@ -88,6 +98,7 @@
 .admonition-icon-info {
     color: #2196f3 !important;
 }
+
 .admonition-info {
     border-left-color: #2196f3 !important;
     background-color: rgba(33, 150, 243, 0.1) !important;
@@ -97,6 +108,7 @@
 .admonition-icon-warning {
     color: #ff9800 !important;
 }
+
 .admonition-warning {
     border-left-color: #ff9800 !important;
     background-color: rgba(255, 152, 0, 0.1) !important;
@@ -106,6 +118,7 @@
 .admonition-icon-danger {
     color: #f44336 !important;
 }
+
 .admonition-danger {
     border-left-color: #f44336 !important;
     background-color: rgba(244, 67, 54, 0.1) !important;
@@ -115,15 +128,19 @@
 [data-theme='dark'] .admonition-tip {
     background-color: rgba(37, 194, 160, 0.15) !important;
 }
+
 [data-theme='dark'] .admonition-note {
     background-color: rgba(68, 138, 255, 0.15) !important;
 }
+
 [data-theme='dark'] .admonition-info {
     background-color: rgba(33, 150, 243, 0.15) !important;
 }
+
 [data-theme='dark'] .admonition-warning {
     background-color: rgba(255, 152, 0, 0.15) !important;
 }
+
 [data-theme='dark'] .admonition-danger {
     background-color: rgba(244, 67, 54, 0.15) !important;
 }
@@ -136,7 +153,8 @@
 
 /* 段落间距优化 */
 .markdown p {
-    margin-bottom: 0.75rem; /* 默认是 1rem */
+    margin-bottom: 0.75rem;
+    /* 默认是 1rem */
 }
 
 /* 列表项间距优化 */
@@ -151,7 +169,8 @@
 
 /* 代码块字体大小 */
 .markdown pre {
-    font-size: 13px; /* 代码块字体 */
+    font-size: 13px;
+    /* 代码块字体 */
     line-height: 1.45;
 }
 
@@ -162,7 +181,8 @@
 
 .markdown table td,
 .markdown table th {
-    padding: 0.5rem 0.75rem; /* 减小单元格内边距 */
+    padding: 0.5rem 0.75rem;
+    /* 减小单元格内边距 */
 }
 
 /* LaTeX 公式样式 - 确保块级公式居中显示 */
@@ -187,8 +207,8 @@
 }
 
 /* 让独立公式段落中的公式本身居中显示 */
-.markdown p:has(> span.katex:only-child) > span.katex,
-.markdown p:has(span.katex:first-child:last-child) > span.katex {
+.markdown p:has(> span.katex:only-child)>span.katex,
+.markdown p:has(span.katex:first-child:last-child)>span.katex {
     display: block !important;
     margin: 0 auto !important;
     text-align: center !important;
@@ -203,12 +223,12 @@
 }
 
 /* 默认：段落中的 katex 是行内的，但如果是独立公式段落则改为块级 */
-.markdown p > span.katex {
+.markdown p>span.katex {
     display: inline-block;
 }
 
-.markdown p:has(> span.katex:only-child) > span.katex,
-.markdown p:has(span.katex:first-child:last-child) > span.katex {
+.markdown p:has(> span.katex:only-child)>span.katex,
+.markdown p:has(span.katex:first-child:last-child)>span.katex {
     display: block !important;
 }
 
@@ -218,4 +238,54 @@
 .markdown li p:has(span.katex:first-child:last-child) {
     text-align: center !important;
     margin: 0.5rem auto !important;
+}
+
+/* ==================== Shiki 语法高亮样式 ==================== */
+
+/* Shiki 双主题支持 - 亮色模式显示 light 主题颜色 */
+html:not([data-theme='dark']) .shiki,
+html:not([data-theme='dark']) .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+    font-style: var(--shiki-light-font-style) !important;
+    font-weight: var(--shiki-light-font-weight) !important;
+    text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
+/* Shiki 双主题支持 - 暗色模式显示 dark 主题颜色 */
+html[data-theme='dark'] .shiki,
+html[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Shiki 代码块基础样式 */
+.shiki {
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 亮色模式代码块背景 */
+html:not([data-theme='dark']) .shiki {
+    background-color: #f6f8fa !important;
+    border: 1px solid #e1e4e8;
+}
+
+/* 暗色模式代码块背景 */
+html[data-theme='dark'] .shiki {
+    background-color: #24292e !important;
+    border: 1px solid #3a4255;
+}
+
+/* 隐藏 Docusaurus 默认的 Prism 代码块（如果 Shiki 已处理） */
+.shiki+.prism-code,
+.theme-code-block:has(.shiki) .prism-code {
+    display: none !important;
 }

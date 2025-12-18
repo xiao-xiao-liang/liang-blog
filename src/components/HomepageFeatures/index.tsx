@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
@@ -11,38 +11,38 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Java 后端开发',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        深入学习 Java 核心技术，包括集合框架、IO流、反射机制等，
+        构建扎实的后端开发基础。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'MySQL 数据库',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        掌握 MySQL 数据库原理，包括索引优化、事务处理、锁机制等，
+        提升数据库设计与调优能力。
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '并发编程 (JUC)',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        探索 Java 并发编程，学习多线程、线程池、锁、原子类等，
+        编写高性能的并发程序。
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -60,6 +60,10 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center margin-bottom--lg">
+          <Heading as="h2">🛠️ 技术栈</Heading>
+          <p className="text--secondary">专注于以下技术领域的学习与分享</p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
