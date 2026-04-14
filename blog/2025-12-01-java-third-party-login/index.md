@@ -53,7 +53,7 @@ OAuth 2.0 定义了四种授权模式，适用于不同场景：
 
 ### 1.3 授权码模式完整流程
 
-![OAuth 2.0 授权码模式流程图](/blog/img/oauth_authorization_flow.png)
+![OAuth 2.0 授权码模式流程图](./oauth_authorization_flow.png)
 
 ### 1.4 关键参数详解
 
@@ -230,7 +230,7 @@ oauth:
 
 ### 4.1 整体架构
 
-![OAuth 模块架构图](/blog/img/oauth_module_architecture.png)
+![OAuth 模块架构图](./oauth_module_architecture.png)
 
 ### 4.2 设计模式应用
 

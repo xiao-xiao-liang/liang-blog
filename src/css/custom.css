@@ -289,3 +289,49 @@ html[data-theme='dark'] .shiki {
 .theme-code-block:has(.shiki) .prism-code {
     display: none !important;
 }
+
+/* ==================== 博客页面与阅读体验优化 ==================== */
+
+/* 1. 缩小博客标题字号，防止看起来太大 */
+.blog-wrapper article header h2,
+article[itemprop="blogPost"] header h2 {
+    font-size: 1.8rem !important; /* 原来默认过大，强制缩小到一个克制的尺寸 */
+    line-height: 1.4;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* 2. 博客文章卡片化边界（让列表里的每篇文章看起来独立且清晰） */
+.blog-wrapper article.margin-bottom--xl {
+    background-color: var(--ifm-color-emphasis-0);
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: 12px;
+    padding: 24px 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2.5rem !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 悬浮微动效，提升点击欲望 */
+.blog-wrapper article.margin-bottom--xl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 20, 50, 0.08);
+}
+
+/* 3. 适配暗黑模式的卡片 */
+[data-theme='dark'] .blog-wrapper article.margin-bottom--xl {
+    background-color: #1a1a1a;
+    border-color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .blog-wrapper article.margin-bottom--xl:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* 4. 阅读全文按钮调整（与卡片整体留白更和谐） */
+.blog-wrapper article footer.row {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--ifm-color-emphasis-200);
+}

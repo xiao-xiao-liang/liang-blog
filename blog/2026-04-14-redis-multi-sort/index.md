@@ -1,8 +1,18 @@
+---
+slug: redis-multi-sort
+title: 🚀 实战解析：如何在 Redis 中优雅实现「距离 + 活跃度」的多维混合排序？
+date: 2026-04-14
+authors: [xiao-xiao-liang]
+tags: [Redis, Java]
+---
+
 # 🚀 实战解析：如何在 Redis 中优雅实现「距离 + 活跃度」的多维混合排序？
 
 ## 💡 业务背景与技术痛点
 
 在社交、O2O 等业务中，**"查找附近的人"** 是一个高频场景。大部分开发者第一反应是使用 Redis 从 3.2 版本引入的 `GEO` 数据结构。
+
+{/* truncate */}
 
 使用 `GEOADD` 写入坐标，使用 `GEOSEARCH`（或旧版的 `GEORADIUS`）按距离搜索，看起来一切都很完美。但当产品经理提出新需求时——
 

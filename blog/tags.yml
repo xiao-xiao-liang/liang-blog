@@ -17,3 +17,35 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+Java:
+  label: Java
+  permalink: /java
+
+OAuth:
+  label: OAuth
+  permalink: /oauth
+
+第三方登录:
+  label: 第三方登录
+  permalink: /third-party-login
+
+分布式锁:
+  label: 分布式锁
+  permalink: /distributed-lock
+
+Redis:
+  label: Redis
+  permalink: /redis
+
+Redisson:
+  label: Redisson
+  permalink: /redisson
+
+并发编程:
+  label: 并发编程
+  permalink: /concurrent-programming
+
+JVM:
+  label: JVM
+  permalink: /jvm

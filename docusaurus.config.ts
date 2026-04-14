@@ -60,6 +60,12 @@ const config: Config = {
     ],
   ],
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   // 客户端模块 - 在客户端加载的脚本
   clientModules: [
     require.resolve('./src/components/ShikiEnhancer/index.tsx'),
