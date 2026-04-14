@@ -50,6 +50,20 @@ const sidebars: SidebarsConfig = {
         'MySQL/索引',
       ],
     },
+    {
+      type: 'category',
+      label: 'Redis',
+      collapsed: true,
+      collapsible: true,
+      link: {
+        type: 'doc',
+        id: 'Redis/index',
+      },
+      items: [
+        'Redis/Redis基础',
+        'Redis/Redis应用',
+      ],
+    },
   ],
 };
 
