@@ -28,11 +28,11 @@ jobs:
 
       # 第四步：将构建好的 build 目录推送到你指定的服务器
       - name: Deploy to Server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "build/*"
-          target: ${{ secrets.SERVER_TARGET_DIR }}
-          strip_components: 1
+        uses: easingthemes/ssh-deploy@v5.1.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rlptgoDzc -i"    
+          SOURCE: "build/"         
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: ${{ secrets.SERVER_TARGET_DIR }}
