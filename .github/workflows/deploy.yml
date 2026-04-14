@@ -1,0 +1,38 @@
+name: Deploy Docusaurus to Server
+
+on:
+  push:
+    branches:
+      - main # 监听 main 分支的 push 操作
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 使用最新的 Ubuntu 运行容器
+
+    steps:
+      # 第一步：拉取你的最新代码
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # 第二步：安装 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 第三步：安装依赖并构建静态文件
+      - name: Install and Build
+        run: |
+          npm ci            
+          npm run build     # 这一步会生成 build/ 目录
+
+      # 第四步：将构建好的 build 目录推送到你指定的服务器
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v5.1.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rlptgoDzc -i"    
+          SOURCE: "build/"         
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: ${{ secrets.SERVER_TARGET_DIR }}
