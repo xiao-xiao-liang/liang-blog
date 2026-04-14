@@ -31,7 +31,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v5.1.0
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rlptgoDzc -i"    
+          ARGS: "-rlptgoDzc -i --rsync-path=/usr/bin/rsync"    
           SOURCE: "build/"         
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USER }}
