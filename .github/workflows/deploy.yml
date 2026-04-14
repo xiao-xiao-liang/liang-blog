@@ -27,12 +27,11 @@ jobs:
           npm run build     # 这一步会生成 build/ 目录
 
       # 第四步：将构建好的 build 目录推送到你指定的服务器
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@v5.1.0
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rlptgoDzc -i"    
-          SOURCE: "build/"         
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          TARGET: ${{ secrets.SERVER_TARGET_DIR }}
+      - name: Deploy to Server via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.SERVER_USER }}
+          server: ${{ secrets.SERVER_HOST }}
+          ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
+          local_path: './build/*'
+          remote_path: ${{ secrets.SERVER_TARGET_DIR }}
