@@ -90,7 +90,7 @@ CREATE TABLE `distributed_lock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
-:::caution[重要前提]
+:::caution 重要前提
 你需要提前在表里插入好对应的资源记录（或在代码中先做一次 `INSERT IGNORE`），因为 `FOR UPDATE` 锁的是已存在的行。
 :::
 
@@ -133,7 +133,7 @@ COMMIT;
 | **等待方式** | 代码自旋（消耗 CPU） | 数据库阻塞（需配置锁等待超时 `innodb_lock_wait_timeout`） |
 | **性能** | 较差（高并发下大量唯一键冲突） | 一般（长事务占连接） |
 
-:::tip[选型建议]
+:::tip 选型建议
 - 如果只是防止定时任务重复执行这类低并发场景，`FOR UPDATE` 方案更省心。
 - 如果分布式锁在核心业务链路上，且并发量较高（如秒杀、支付），**请不要用 MySQL 做分布式锁**，它会成为系统瓶颈。此时应该转向 Redis (Redisson) 或 Zookeeper。
 :::
@@ -157,7 +157,7 @@ if (redis.setnx("lock_key", "value") == 1) {
 }
 ```
 
-:::danger[致命问题：非原子操作]
+:::danger 致命问题：非原子操作
 `SETNX` 和 `EXPIRE` 是**两条独立命令**。如果 `SETNX` 成功后、`EXPIRE` 执行前，服务器恰好宕机了，这把锁就**永远不会过期**——死锁。
 :::
 
@@ -259,7 +259,7 @@ Object result = jedis.eval(luaScript,
 
 `SET NX` 失败就直接返回了，想要阻塞等待只能自己写 `while` 循环轮询，既浪费 CPU 又不优雅。
 
-:::info[小结]
+:::info 小结
 手动实现 Redis 分布式锁，写到最后你会发现：要处理原子性、要写 Lua 脚本、要考虑续期、要实现可重入、要处理等待队列...... 这些全都是 **Redisson** 帮你做好的事情。
 :::
 
@@ -305,7 +305,7 @@ try {
 }
 ```
 
-:::warning[lock() vs tryLock() 的重要区别]
+:::warning lock() vs tryLock() 的重要区别
 - `lock()`：阻塞等待，不指定 leaseTime，**看门狗自动续期**，推荐用于业务执行时间不可预估的场景。
 - `tryLock(waitTime, leaseTime, unit)`：指定了 leaseTime，**看门狗不会启动**，锁到期后直接释放。如果你的业务可能超过 leaseTime 但没有看门狗续期，互斥性就被打破了。
 - 最佳实践：如果不确定业务耗时，用 `tryLock(waitTime, -1, unit)`（leaseTime 传 -1），这样既有超时等待，又有看门狗续期。
