@@ -31,6 +31,9 @@ const sidebars: SidebarsConfig = {
         'JUC/ThreadLocal',
         'JUC/线程池',
         'JUC/AQS',
+        'JUC/并发工具',
+        'JUC/aqs-deep-dive',
+        'JUC/ReentrantLock',
       ],
     },
     {

@@ -56,16 +56,64 @@ import DocCardList from '@theme/DocCardList';
 
 - **如何合理地设置线程池的大小？** - 学会根据 CPU 密集型和 I/O 密集型任务进行调优
 
+---
+
+### 🔥 锁与同步机制深度系列（推荐按顺序阅读）
+
+以下三篇文章构成了一条**渐进式学习路线**，从"会用"到"理解框架"再到"读懂源码"，带你彻底掌握 JUC 锁机制的核心：
+
+| 阅读顺序 | 文章 | 定位 | 内容概述 |
+|:---:|------|------|----------|
+| ① 入门 | [**并发工具类全景指南**](./java-concurrency-tools.md) | 会用 | 系统介绍 CountDownLatch、CyclicBarrier、Semaphore、ReentrantLock、读写锁、StampedLock、原子类、并发容器、CompletableFuture 等核心工具，配有完整代码示例 |
+| ② 进阶 | [**AQS 深度解析**](./aqs-deep-dive.md) | 理解框架 | 基于 JDK 17 源码，拆解 AQS 三大支柱（state、CLH 队列、模板方法），逐行分析 acquire/release 独占流程、共享模式、LockSupport 原理及 ConditionObject 双队列模型 |
+| ③ 深入 | [**ReentrantLock 源码全解**](./reentrantlock-source-code.md) | 读源码 | 深入分析公平/非公平锁的 tryAcquire 差异、可重入 state 递增机制、Condition 在生产者-消费者中的全链路流转，附公平锁 vs 非公平锁性能 Benchmark |
+
+### 3. 并发工具类全景指南 `① 入门`
+
+系统介绍 `java.util.concurrent` 包中最核心的并发工具类，涵盖**同步协调、锁机制、原子类、并发容器与异步编排**五大板块：
+
+- **CountDownLatch** — 倒计时门闩，让一个或多个线程等待其他 N 个操作完成
+- **CyclicBarrier** — 循环栅栏，N 个线程互相等待，到齐后一起出发
+- **Semaphore** — 信号量，控制同时访问资源的最大线程数
+- **ReentrantLock** — 可重入锁，功能更强大的 synchronized 替代品
+- **ReentrantReadWriteLock** — 读写锁，读多写少场景的性能优化
+- **StampedLock** — 邮戳锁，乐观读带来极致读性能
+- **原子类 Atomic 家族** — 无锁线程安全的变量操作（含 LongAdder 高性能计数器）
+- **并发容器** — ConcurrentHashMap、CopyOnWriteArrayList 等
+- **CompletableFuture** — 异步编排，链式组合异步任务
+
+### 4. AQS 深度解析 `② 进阶`
+
+基于 **JDK 17** 源码深入解析 AQS 的设计思想与内部实现。AQS 是 ReentrantLock、Semaphore、CountDownLatch 等工具的底层框架，理解 AQS 等于拿到了打开 JUC 源码大门的钥匙：
+
+- **state 同步状态** — 一个 volatile int 如何在不同同步器中承载不同语义
+- **CLH 等待队列** — 双向链表的设计细节：哨兵 head、延迟设置 SIGNAL、从 tail 往前遍历
+- **模板方法模式** — 框架定义流程（acquire/release），子类定义语义（tryAcquire/tryRelease）
+- **独占模式完整流程** — 逐层拆解 addWaiter → acquireQueued → shouldParkAfterFailedAcquire → unparkSuccessor
+- **共享模式** — 传播唤醒的精髓与 setHeadAndPropagate
+- **LockSupport** — 许可证机制，与 wait/notify 的本质区别
+- **ConditionObject 双队列模型** — await/signal 在同步队列与条件队列之间的节点转移
+
+### 5. ReentrantLock 源码全解 `③ 深入`
+
+基于 **JDK 17** 源码，深入分析 ReentrantLock 如何用不到 100 行代码实现一把功能完整的可重入互斥锁：
+
+- **类架构** — Sync → NonfairSync / FairSync 的继承体系
+- **非公平锁 vs 公平锁** — 差异只在一行 `hasQueuedPredecessors()`
+- **可重入的实现** — state 递增递减 + exclusiveOwnerThread
+- **tryRelease 解锁源码** — state 减到 0 才真正释放
+- **Condition 全链路流转** — 生产者-消费者中 await/signal 的完整状态变化图
+- **性能实测 Benchmark** — 公平锁通常慢 2-10 倍的原因与上下文切换代价分析
+- **最佳实践与陷阱** — lock 写在 try 外面、tryLock 防死锁模式、lockInterruptibly 响应中断
+
 ## 🚀 后续规划
 
 本模块将继续扩展更多 JUC 核心主题，包括但不限于：
 
-- **AQS（AbstractQueuedSynchronizer）** - 并发工具类的基石
-- **锁机制** - ReentrantLock、ReadWriteLock 等
-- **原子类** - AtomicInteger、AtomicReference 等
-- **并发集合** - ConcurrentHashMap、CopyOnWriteArrayList 等
-- **并发工具类** - CountDownLatch、CyclicBarrier、Semaphore 等
-- **Fork/Join 框架** - 并行计算框架
+- **Semaphore 源码解析** — AQS 共享模式的典型应用
+- **ReentrantReadWriteLock 源码解析** — 读写锁的 state 高低 16 位拆分设计
+- **Java 内存模型（JMM）** — happens-before 与内存可见性
+- **Fork/Join 框架** — 并行计算与工作窃取算法
 
 本索引页会作为整体导航，帮助你快速了解每个小节在并发体系中的位置。
 
